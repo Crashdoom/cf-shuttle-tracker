@@ -1,4 +1,4 @@
-# Shuttle Tracker on CF Workers
+# 🚏🚌  Shuttle Tracker on CF Workers
 A simple Shuttle Tracker system that runs on CloudFlare Workers. Made with &lt;3 &nbsp; for BLFC! *Still a work in progress!*
 
 ### Development Setup
