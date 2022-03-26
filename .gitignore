@@ -1,0 +1,4 @@
+.vscode
+cf-shuttle-tracker/dist
+cf-shuttle-tracker/node_modules
+.DS_Store
