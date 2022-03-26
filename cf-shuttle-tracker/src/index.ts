@@ -3,7 +3,12 @@ import CloudflareWorkerGlobalScope, {
 } from 'types-cloudflare-worker';
 import { Shuttle } from './models/Shuttle';
 import { ShuttleManagement } from './shuttleManagement';
-import { checkMethod, handleError, jsonResponse, nearestStop } from './utils';
+import {
+  checkMethod,
+  filterPublicShuttleAttributes,
+  handleError,
+  jsonResponse,
+} from './utils';
 
 declare var self: CloudflareWorkerGlobalScope;
 declare global {
@@ -34,7 +39,7 @@ export class Worker {
     const { keys } = await SHUTTLES.list();
     const shuttles = await Promise.all(
       keys.map(async ({ name }) =>
-        this.filterPublicShuttleAttributes(
+        filterPublicShuttleAttributes(
           (await SHUTTLES.get(name, 'json')) as Shuttle,
         ),
       ),
@@ -44,16 +49,6 @@ export class Worker {
       lastUpdated: Date.now(),
       shuttles,
     });
-  }
-
-  private async filterPublicShuttleAttributes(
-    shuttle: Shuttle,
-  ): Promise<Partial<Shuttle>> {
-    return {
-      ...shuttle,
-      stopName: await nearestStop(shuttle.location),
-      authorization: undefined,
-    };
   }
 }
 

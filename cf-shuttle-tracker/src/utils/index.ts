@@ -1,3 +1,5 @@
+import { Shuttle } from '../models/Shuttle';
+
 export class MethodNotAllowedError extends Error {
   constructor(method: string) {
     super(`Method not allowed: ${method}`);
@@ -76,7 +78,7 @@ export async function nearestStop(
   }
 
   const distances = stops.map(({ name: stop }) =>
-    sphericalDistance(shuttle, convertToGeoLocation(stop)),
+    sphericalDistance(convertToGeoLocation(stop), shuttle),
   );
   const minDistance = Math.min(...distances);
 
@@ -87,4 +89,23 @@ export async function nearestStop(
   const minIndex = distances.indexOf(minDistance);
 
   return STOPS.get(stops[minIndex].name, 'text');
+}
+
+export function happenedXSecondsAgo(
+  previousTime: number,
+  seconds: number,
+): boolean {
+  const now = Date.now();
+  const timeDifference = now - previousTime;
+
+  return timeDifference > seconds * 1000;
+}
+
+export function filterPublicShuttleAttributes(
+  shuttle: Shuttle,
+): Partial<Shuttle> {
+  return {
+    ...shuttle,
+    authorization: undefined,
+  };
 }

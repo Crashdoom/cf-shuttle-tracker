@@ -18,4 +18,10 @@ export interface Shuttle {
   location: GeoLocation;
   status: ShuttleStatus;
   stopName: string | null;
+  stopArrivedAt: number | null;
+}
+
+export interface ShuttleUpdate {
+  location: GeoLocation;
+  status?: ShuttleStatus;
 }
