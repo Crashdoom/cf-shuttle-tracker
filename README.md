@@ -27,7 +27,7 @@ Take the output from the `npm run build` command (you can find that in `dist/ind
 If you've got an idea, found a mistake, or otherwise have some feedback you'd like to share, please create an issue to let us know. Or, if you're feeling up to it, you can always create a pull request with your changes! *(We don't bite!)*
 
 ### License
-Licensed under the GPL-3.0 License (https://www.gnu.org/licenses/gpl-3.0.en.html). Feel free to use this code for whatever you want, but please give back to the community and credit us if you do.
+Licensed under the GNU Affero General Public License v3.0 (https://spdx.org/licenses/AGPL-3.0-or-later.html). Feel free to use this code for whatever you want, but please give back to the community and credit us if you do.
 
 &copy; 2022 Adam Walker ([@Crashdoom](https://github.com/Crashdoom))
 
